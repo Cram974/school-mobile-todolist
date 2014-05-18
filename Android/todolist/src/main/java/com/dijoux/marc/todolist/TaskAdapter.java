@@ -30,10 +30,10 @@ public class TaskAdapter extends ArrayAdapter<Task> {
         ImageView imageView = (ImageView)cellView.findViewById(R.id.image);
 
         Task t = getItem(position);
-        titleView.setText(t.name);
-        subtitleView.setText("priority: " + t.priority);
+        titleView.setText(t.getName());
+        subtitleView.setText("priority: " + t.getPriority());
         int iconId = R.drawable.prio0;
-        switch (t.priority){
+        switch (t.getPriority()){
             case 1:
                 iconId = R.drawable.prio1;
                 break;
