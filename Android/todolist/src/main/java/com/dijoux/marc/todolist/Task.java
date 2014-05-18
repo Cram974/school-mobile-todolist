@@ -7,14 +7,16 @@ public class Task {
     int id;
     String name;
     int priority;
+    String category;
 
     public Task(){
     }
 
-    public Task(int id, String name, int priority){
+    public Task(int id, String name, int priority, String category){
         this.id = id;
         this.name = name;
         this.priority = priority;
+        this.category = category;
     }
 
     public void setId(int id){
@@ -29,6 +31,10 @@ public class Task {
         this.priority = priority;
     }
 
+    public void setCategory(String category){
+        this.category = category;
+    }
+
     public int getId(){
         return this.id;
     }
@@ -39,5 +45,9 @@ public class Task {
 
     public int getPriority(){
         return this.priority;
+    }
+
+    public String getCategory(){
+        return this.category;
     }
 }
