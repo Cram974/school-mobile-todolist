@@ -1,26 +1,22 @@
 package com.dijoux.marc.todolist;
 
+import java.io.Serializable;
+
 /**
  * Created by Cram on 18/05/2014.
  */
-public class Task {
-    int id;
+public class Task implements Serializable {
     String name;
     int priority;
-    String category;
 
     public Task(){
+        this.name = "default";
+        this.priority = 0;
     }
 
-    public Task(int id, String name, int priority, String category){
-        this.id = id;
+    public Task(String name, int priority){
         this.name = name;
         this.priority = priority;
-        this.category = category;
-    }
-
-    public void setId(int id){
-        this.id = id;
     }
 
     public  void setName(String name){
@@ -31,23 +27,11 @@ public class Task {
         this.priority = priority;
     }
 
-    public void setCategory(String category){
-        this.category = category;
-    }
-
-    public int getId(){
-        return this.id;
-    }
-
     public String getName(){
         return this.name;
     }
 
     public int getPriority(){
         return this.priority;
-    }
-
-    public String getCategory(){
-        return this.category;
     }
 }

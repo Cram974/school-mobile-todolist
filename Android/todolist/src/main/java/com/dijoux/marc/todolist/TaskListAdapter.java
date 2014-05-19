@@ -8,11 +8,13 @@ import android.widget.ArrayAdapter;
 import android.widget.TextView;
 import android.widget.ImageView;
 
-public class TaskAdapter extends ArrayAdapter<Task> {
+import java.util.ArrayList;
+
+public class TaskListAdapter extends ArrayAdapter<Task> {
 
     private final Context context;
 
-    public TaskAdapter(Context context, Task[] values) {
+    public TaskListAdapter(Context context, ArrayList<Task> values) {
         super(context, R.layout.task_cell, values);
         this.context = context;
     }
