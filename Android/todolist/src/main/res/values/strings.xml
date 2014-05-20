@@ -6,6 +6,7 @@
     <string name="cancel">Cancel</string>
     <string name="ok">Ok</string>
     <string name="add_task">Add a Task</string>
+    <string name="edit_task">Edit Task</string>
     <string name="quit">Quit</string>
     <string name="delete">Delete</string>
     <string name="edit">Edit</string>

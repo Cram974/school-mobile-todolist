@@ -11,19 +11,21 @@ public class TaskDbAdapter {
 
     public static final String KEY_NAME = "name";
     public static final String KEY_PRIO = "priority";
-    public static final String KEY_ROWID = "id";
+    public static final String KEY_ROWID = "_id";
+
+    private static final String DATABASE_NAME = "todolist";
+    private static final String DATABASE_TABLE = "tasks";
+    private static final int DATABASE_VERSION = 2;
 
     private static final String TAG = "NotesDbAdapter";
     private DatabaseHelper mDbHelper;
     private SQLiteDatabase mDb;
 
     private static final String DATABASE_CREATE =
-            "create table tasks ( id integer primary key autoincrement, "
-                    + "name text not null, priority integer not null);";
-
-    private static final String DATABASE_NAME = "todolist";
-    private static final String DATABASE_TABLE = "tasks";
-    private static final int DATABASE_VERSION = 2;
+            "create table " + DATABASE_TABLE + " ( " +
+            KEY_ROWID + " integer primary key autoincrement, "+
+            KEY_NAME  + " text not null, " +
+            KEY_PRIO + " integer not null );";
 
     private final Context mCtx;
 

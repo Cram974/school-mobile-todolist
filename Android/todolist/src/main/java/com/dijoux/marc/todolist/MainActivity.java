@@ -4,6 +4,7 @@ package com.dijoux.marc.todolist;
 import android.app.ListActivity;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.view.ContextMenu;
 import android.view.Menu;
@@ -19,46 +20,55 @@ import android.app.AlertDialog;
  */
 public class MainActivity extends ListActivity implements View.OnClickListener {
 
-    private static final int EDIT_ACTIVITY = 1;
-    private static final int ADD_ACTIVITY = 2;
-    private int lastPosition = -1;
+    private static final int ACTIVITY_CREATE=0;
+    private static final int ACTIVITY_EDIT=1;
+
+    private static final int EDIT_ID = Menu.FIRST;
+    private static final int DELETE_ID = Menu.FIRST + 1;
+
+    private TaskDbAdapter mDbHelper;
+    private TaskCursorAdapter mAdapter;
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
+
+        mDbHelper = new TaskDbAdapter(this);
+        mDbHelper.open();
+        fillData();
         registerForContextMenu(getListView());
+    }
 
-        ArrayList<Task> tasks = new ArrayList<Task>();
+    private void fillData() {
+        Cursor tasksCursor = mDbHelper.fetchAllTasks();
+        startManagingCursor(tasksCursor);
 
-        tasks.add(new Task("Manger de la soupe", 3));
-
-        this.setListAdapter(new TaskListAdapter(this, tasks));
+        mAdapter = new TaskCursorAdapter(this, tasksCursor,0);
+        setListAdapter(mAdapter);
     }
 
     @Override
     public void onCreateContextMenu(ContextMenu menu, View v,
                                     ContextMenu.ContextMenuInfo menuInfo) {
         super.onCreateContextMenu(menu, v, menuInfo);
-        menu.add(0, Menu.FIRST, Menu.NONE, R.string.edit);
-        menu.add(0, Menu.FIRST+1, Menu.NONE, R.string.delete);
+        menu.add(0, EDIT_ID, Menu.NONE, R.string.edit);
+        menu.add(0, DELETE_ID, Menu.NONE, R.string.delete);
     }
 
     @Override
     public boolean onContextItemSelected(MenuItem item) {
         final AdapterView.AdapterContextMenuInfo menuInfo =
                 (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
-        TaskListAdapter adapter = (TaskListAdapter)this.getListAdapter();
-        lastPosition = menuInfo.position;
 
         switch(item.getItemId()) {
             //Edit
-            case Menu.FIRST:
-                Intent intent = new Intent(this, AddTaskActivity.class);
-                intent.putExtra("Task", adapter.getItem(menuInfo.position));
-                startActivityForResult(intent, EDIT_ACTIVITY);
+            case EDIT_ID:
+                Intent intent = new Intent(this, EditTaskActivity.class);
+                intent.putExtra(TaskDbAdapter.KEY_ROWID, getItemId(menuInfo.position));
+                startActivityForResult(intent, ACTIVITY_EDIT);
                 return true;
             //Delete
-            case Menu.FIRST+1:
+            case DELETE_ID:
                 //Create Confirmation Dialog
                 AlertDialog.Builder builder = new AlertDialog.Builder(this);
                 builder.setTitle(R.string.delete);
@@ -78,51 +88,25 @@ public class MainActivity extends ListActivity implements View.OnClickListener {
 
     @Override
     protected void onActivityResult (int requestCode, int resultCode, Intent data) {
-        TaskListAdapter adapter = (TaskListAdapter)this.getListAdapter();
-        switch(requestCode) {
-            case EDIT_ACTIVITY:
-                switch (resultCode){
-                    case RESULT_OK:
-                        Task nt = (Task)data.getSerializableExtra("Task");
-                        if(nt != null && lastPosition > -1){
-                            Task old = adapter.getItem(lastPosition);
-                            old.setName(nt.getName());
-                            old.setPriority(nt.getPriority());
-                            adapter.notifyDataSetChanged();
-                        }
-                        break;
-                    case RESULT_CANCELED:
-                        break;
-                }
-                break;
-            case ADD_ACTIVITY:
-                switch (resultCode){
-                    case RESULT_OK:
-                        Task nt = (Task)data.getSerializableExtra("Task");
-                        if(nt != null) {
-                            adapter.add(nt);
-                            adapter.notifyDataSetChanged();
-                        }
-                        break;
-                    case RESULT_CANCELED:
-                        break;
-                }
-                break;
-        }
+        super.onActivityResult(requestCode, resultCode, data);
+        fillData();
     }
 
     protected void removeItem(int position){
-        TaskListAdapter adapter = (TaskListAdapter)this.getListAdapter();
-        adapter.remove(adapter.getItem(position));
+        mDbHelper.deleteTask(getItemId(position));
     }
 
+    protected long getItemId(int position){
+        Cursor c = (Cursor)mAdapter.getItem(position);
+        return c.getLong(c.getColumnIndex(TaskDbAdapter.KEY_ROWID));
+    }
 
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.button_add:
-                Intent intent = new Intent(this, AddTaskActivity.class);
-                startActivityForResult(intent, ADD_ACTIVITY);
+                Intent intent = new Intent(this, EditTaskActivity.class);
+                startActivityForResult(intent, ACTIVITY_CREATE);
                 break;
             case R.id.button_quit:
                 finish();
