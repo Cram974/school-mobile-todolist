@@ -77,6 +77,7 @@ public class MainActivity extends ListActivity implements View.OnClickListener {
                     public void onClick(DialogInterface dialog, int id) {
                         // User clicked OK button
                         removeItem(menuInfo.position);
+                        fillData();
                     }
                 });
                 builder.setNegativeButton(R.string.cancel, null);
