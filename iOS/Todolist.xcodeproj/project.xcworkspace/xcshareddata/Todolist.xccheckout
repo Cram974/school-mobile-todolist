@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>6678623F-4F97-4BC3-A13E-0B17BE8D1B2A</string>
+	<key>IDESourceControlProjectName</key>
+	<string>Todolist</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>4801C18C-4323-4AC0-893E-B18F63DC49EB</key>
+		<string>ssh://github.com/Cram974/school-mobile-todolist.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>Todolist/Todolist.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>4801C18C-4323-4AC0-893E-B18F63DC49EB</key>
+		<string>../../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>ssh://github.com/Cram974/school-mobile-todolist.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>4801C18C-4323-4AC0-893E-B18F63DC49EB</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>4801C18C-4323-4AC0-893E-B18F63DC49EB</string>
+			<key>IDESourceControlWCCName</key>
+			<string>school-mobile-todolist</string>
+		</dict>
+	</array>
+</dict>
+</plist>
