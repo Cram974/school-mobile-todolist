@@ -8,9 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
-@interface DetailViewController : UIViewController
+@interface DetailViewController : UIViewController <UIPickerViewDataSource, UIPickerViewDelegate>
+@property (weak, nonatomic) IBOutlet UITextField *nameTextField;
+@property (weak, nonatomic) IBOutlet UILabel *priorityLabel;
+@property (weak, nonatomic) IBOutlet UISlider *priorityPicker;
+@property (weak, nonatomic) IBOutlet UIPickerView *categoryPicker;
+- (IBAction)priorityValueChanged:(id)sender;
 
 @property (strong, nonatomic) id detailItem;
+@property (nonatomic, strong) NSArray *itemsArray;
 
-@property (weak, nonatomic) IBOutlet UILabel *detailDescriptionLabel;
 @end

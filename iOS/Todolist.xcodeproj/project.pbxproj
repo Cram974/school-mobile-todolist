@@ -25,6 +25,7 @@
 		264F20CD192CBC1D00A72B45 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 264F20A8192CBC1C00A72B45 /* CoreData.framework */; };
 		264F20D5192CBC1D00A72B45 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 264F20D3192CBC1D00A72B45 /* InfoPlist.strings */; };
 		264F20D7192CBC1D00A72B45 /* TodolistTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 264F20D6192CBC1D00A72B45 /* TodolistTests.m */; };
+		26C29941192D1ECB00171599 /* Task.m in Sources */ = {isa = PBXBuildFile; fileRef = 26C29940192D1ECB00171599 /* Task.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +62,8 @@
 		264F20D2192CBC1D00A72B45 /* TodolistTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "TodolistTests-Info.plist"; sourceTree = "<group>"; };
 		264F20D4192CBC1D00A72B45 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		264F20D6192CBC1D00A72B45 /* TodolistTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TodolistTests.m; sourceTree = "<group>"; };
+		26C2993F192D1ECB00171599 /* Task.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Task.h; sourceTree = "<group>"; };
+		26C29940192D1ECB00171599 /* Task.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Task.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -132,6 +135,8 @@
 				264F20C0192CBC1D00A72B45 /* DetailViewController.m */,
 				264F20C2192CBC1D00A72B45 /* Images.xcassets */,
 				264F20B9192CBC1D00A72B45 /* Todolist.xcdatamodeld */,
+				26C2993F192D1ECB00171599 /* Task.h */,
+				26C29940192D1ECB00171599 /* Task.m */,
 				264F20AB192CBC1D00A72B45 /* Supporting Files */,
 			);
 			path = Todolist;
@@ -265,6 +270,7 @@
 			files = (
 				264F20C1192CBC1D00A72B45 /* DetailViewController.m in Sources */,
 				264F20BE192CBC1D00A72B45 /* MasterViewController.m in Sources */,
+				26C29941192D1ECB00171599 /* Task.m in Sources */,
 				264F20BB192CBC1D00A72B45 /* Todolist.xcdatamodeld in Sources */,
 				264F20B5192CBC1D00A72B45 /* AppDelegate.m in Sources */,
 				264F20B1192CBC1D00A72B45 /* main.m in Sources */,
@@ -472,6 +478,7 @@
 				264F20DC192CBC1D00A72B45 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		264F20DD192CBC1D00A72B45 /* Build configuration list for PBXNativeTarget "TodolistTests" */ = {
 			isa = XCConfigurationList;
@@ -480,6 +487,7 @@
 				264F20DF192CBC1D00A72B45 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
